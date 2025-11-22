@@ -32,13 +32,13 @@ app.get('/teas/:id', (req,res)=>{
     res.status(200).send(tea)
 })
 
-
-
+//update tea
 app.put('/teas/:id', (req,res)=>{
     const tea = teaData.find(t=>t.id === parseInt(req.params.id))
     if(!tea){
         return res.status(404).send('Tea not found')
     }
+    const { name, course } = req.body;
     tea.name = name;
     tea.course = course
     res.send(200).send(tea)
